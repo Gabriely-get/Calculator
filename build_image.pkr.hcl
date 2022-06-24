@@ -1,13 +1,13 @@
 variables {
-  REPOSITORY = "gabsss/toll-repository"
-  USERNAME   = "gabsss"
-  PASSWORD   = "Caminhoilegra21!"
+  REPOSITORY = ""
+  USERNAME   = ""
+  PASSWORD   = ""
 }
 
 source "docker" "toll" {
   changes = [
     "EXPOSE 8000",
-    "ENTRYPOINT  [\"java\", \"-jar\", \"Toll-1.0.jar\"]"
+    "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
   ]
   commit = "true"
   image  = "ubuntu:18.04"
@@ -26,20 +26,20 @@ build {
   }
 
   provisioner "file" {
-    source = "/build/libs/calculator.jar"
+    source      = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/extracted-calculator/Calculator-shadow-1.0/lib/Calculator-1.0-all.jar"
     destination = "/calculator.jar"
   }
 
   post-processors {
     post-processor "docker-tag" {
-      repository = "${var.REPOSITORY}"
+        repository = "{{user `REPOSITORY`}}"
       tags       = ["latest"]
     }
 
     post-processor "docker-push" {
       login          = true
-      login_username = "${var.USERNAME}"
-      login_password = "${var.PASSWORD}"
+      login_username = "{{user `USERNAME`}}"
+      login_password = "{{user `PASSWORD`}}"
     }
   }
 }
