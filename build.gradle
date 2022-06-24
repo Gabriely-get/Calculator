@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'application'
+    id("com.github.johnrengelman.shadow") version "7.1.2"
+}
+
+group 'com.gabrielyget'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+dependencies {
+    implementation([
+            'org.springframework:spring-core:5.3.11',
+            'org.springframework:spring-context:5.3.11',
+            'org.springframework:spring-beans:5.3.11',
+
+            'com.fasterxml.jackson.core:jackson-databind:2.13.1',
+
+            'com.netflix.karyon:karyon-core:2.1.00-RC6',
+            'com.netflix.karyon:karyon-governator:2.1.00-RC6',
+
+            'io.reactivex:rxnetty:0.5.1',
+            'io.reactivex.rxjava2:rxjava:2.2.21',
+            'javax.ws.rs:javax.ws.rs-api:2.1.1',
+
+            "org.slf4j:slf4j-api:2.0.0-alpha5",
+            "org.slf4j:slf4j-simple:2.0.0-alpha5"
+    ])
+    testImplementation([
+            'org.junit.jupiter:junit-jupiter-api:5.8.2',
+            "org.springframework:spring-test:5.3.11"
+    ])
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClass.set('com.gabrielyget.cloudnative.tema08.CalculatorApplicationRunner')
+}
