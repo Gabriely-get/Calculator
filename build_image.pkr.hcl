@@ -18,11 +18,11 @@ build {
   sources = ["source.docker.toll"]
 
   provisioner "shell" {
-    script = "install-ansible.sh"
+    script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
   }
 
   provisioner "ansible-local" {
-    playbook_file = "common.yml"
+    playbook_file = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/common.yml"
   }
 
   provisioner "file" {
