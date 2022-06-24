@@ -1,13 +1,16 @@
 pipeline {
+
+    agent any
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+        DOCKERHUB_REPOSITORY = credentials('repository_name')
+    }
+
     stages {
-        stage('test') {
+        stage('Build Packer Image') {
             steps {
-                sh './gradlew test'
-            }
-        }
-        stage('build') {
-            steps {
-                sh './gradlew build'
+                sh 'packer build -var "REPOSITORY=$DOCKERHUB_REPOSITORY" -var "USERNAME=$DOCKERHUB_CREDENTIALS_USR" -var "PASSWORD=$DOCKERHUB_CREDENTIALS_PSW" "Get_Calculator_Artifactory/build_image.pkr.hcl"'
             }
         }
     }
