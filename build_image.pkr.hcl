@@ -32,14 +32,14 @@ build {
 
   post-processors {
     post-processor "docker-tag" {
-        repository = "{{user `REPOSITORY`}}"
+      repository = "${var.REPOSITORY}"
       tags       = ["latest"]
     }
 
     post-processor "docker-push" {
       login          = true
-      login_username = "{{user `USERNAME`}}"
-      login_password = "{{user `PASSWORD`}}"
+      login_username = "${var.USERNAME}"
+      login_password = "${var.PASSWORD}"
     }
   }
 }
