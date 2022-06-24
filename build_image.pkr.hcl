@@ -17,7 +17,11 @@ source "docker" "calculator" {
 build {
   sources = ["source.docker.calculator"]
 
-  provisioner "ansible" {
+  provisioner "shell" {
+    script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
+  }
+
+  provisioner "ansible-local" {
     playbook_file = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/common.yml"
   }
 
