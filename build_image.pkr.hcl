@@ -4,7 +4,7 @@ variables {
   PASSWORD   = ""
 }
 
-source "docker" "toll" {
+source "docker" "calculator" {
   changes = [
     "EXPOSE 8000",
     "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
@@ -15,7 +15,7 @@ source "docker" "toll" {
 }
 
 build {
-  sources = ["source.docker.toll"]
+  sources = ["source.docker.calculator"]
 
   provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
