@@ -5,6 +5,10 @@ variables {
 }
 
 source "docker" "calculator" {
+
+}
+
+build {
   changes = [
     "EXPOSE 8000",
     "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
@@ -12,10 +16,6 @@ source "docker" "calculator" {
   commit = "true"
   image  = "ubuntu:18.04"
   pull   = "true"
-}
-
-build {
-  sources = ["source.docker.calculator"]
 
   provisioner "shell-local" {
     inline = ["echo AAAA"]
