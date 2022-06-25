@@ -19,7 +19,7 @@ build {
 
   provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
-    inline = "echo 'AAAA'"
+    inline = ["echo 'AAAA'"]
   }
 
   provisioner "ansible-local" {
