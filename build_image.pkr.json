@@ -1,0 +1,48 @@
+{
+  "variables": {
+    "REPOSITORY": "",
+    "USERNAME": "",
+    "PASSWORD": ""
+  },
+  "builders":[
+    {
+      "type": "docker",
+      "image": "ubuntu:18.04",
+      "commit": true,
+      "changes": [
+        "EXPOSE 8000",
+        "ENTRYPOINT [\"java\", \"-jar\", \"calculator.jar\"]"
+      ]
+    }
+  ],
+  "provisioners":[
+    {
+      "type": "shell",
+      "script": "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
+    },
+    {
+      "type": "file",
+      "source": "/var/jenkins_home/workspace/Get_Calculator_Artifactory/extracted-calculator/Calculator-shadow-1.0/lib/Calculator-1.0-all.jar",
+      "destination": "calculator.jar"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "./playbook.yml"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "${var.REPOSITORY}",
+        "tag": "latest"
+      },
+      {
+        "type": "docker-push",
+        "login": "true",
+        "login_username": "{{user `USERNAME`}}",
+        "login_password": "{{user `PASSWORD`}}"
+      }
+    ]
+  ]
+}
