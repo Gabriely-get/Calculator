@@ -28,10 +28,13 @@ pipeline {
 
         stage('Build Packer Image') {
             steps {
-                sh 'packer init Get_Calculator_Artifactory/build_image.pkr.hcl'
-                sh 'packer fmt Get_Calculator_Artifactory/build_image.pkr.hcl'
-                sh 'packer validate Get_Calculator_Artifactory/build_image.pkr.hcl'
-                sh 'packer build -var "REPOSITORY=$DOCKERHUB_REPOSITORY" -var "USERNAME=$DOCKERHUB_CREDENTIALS_USR" -var "PASSWORD=$DOCKERHUB_CREDENTIALS_PSW" "Get_Calculator_Artifactory/build_image.pkr.hcl"'
+                sh """
+                #!/bin/bash
+                    packer init Get_Calculator_Artifactory/build_image.pkr.hcl
+                    packer fmt Get_Calculator_Artifactory/build_image.pkr.hcl
+                    packer validate Get_Calculator_Artifactory/build_image.pkr.hcl
+                    packer build -var "REPOSITORY=$DOCKERHUB_REPOSITORY" -var "USERNAME=$DOCKERHUB_CREDENTIALS_USR" -var "PASSWORD=$DOCKERHUB_CREDENTIALS_PSW" "Get_Calculator_Artifactory/build_image.pkr.hcl"
+                """
             }
         }
     }
