@@ -14,23 +14,23 @@ variables {
 }
 
 source "docker" "calculator" {
+  image  = "ubuntu:18.04"
   changes = [
     "EXPOSE 8000",
     "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
   ]
   commit = "true"
-  image  = "ubuntu:18.04"
   pull   = "true"
 }
 
 build {
   sources = ["source.docker.calculator"]
 
-  provisioner "shell-local" {
+  provisioner "shell" {
     inline = ["echo AAAA"]
   }
 
-  provisioner "shell-local" {
+  provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
   }
 
