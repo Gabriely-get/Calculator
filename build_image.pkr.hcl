@@ -17,10 +17,13 @@ source "docker" "calculator" {
 build {
   sources = ["source.docker.calculator"]
 
-  provisioner "shell" {
-    inline = ["echo 'AAAA'"]
+  provisioner "shell-local" {
+    inline = ["echo AAAA"]
   }
 
+  provisioner "shell-local" {
+    script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
+  }
 
   provisioner "ansible-local" {
     playbook_file = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/common.yml"
