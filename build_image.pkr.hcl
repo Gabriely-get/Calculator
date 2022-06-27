@@ -13,7 +13,7 @@ variables {
   PASSWORD   = ""
 }
 
-source "docker" "calculator" {
+source "docker" "ubuntu" {
   image  = "ubuntu:18.04"
   changes = [
     "EXPOSE 8000",
@@ -24,7 +24,7 @@ source "docker" "calculator" {
 }
 
 build {
-  sources = ["source.docker.calculator"]
+  sources = ["source.docker.ubuntu"]
 
   provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
