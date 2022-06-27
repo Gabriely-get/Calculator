@@ -1,4 +1,11 @@
-
+packer {
+  required_plugins {
+    docker = {
+      version = ">= 0.0.7"
+      source  = "github.com/hashicorp/docker"
+    }
+  }
+}
 
 variables {
   REPOSITORY = ""
@@ -6,7 +13,7 @@ variables {
   PASSWORD   = ""
 }
 
-source "docker" "ubuntu" {
+source "docker" "calculator" {
   image  = "ubuntu:18.04"
   changes = [
     "EXPOSE 8000",
@@ -17,7 +24,7 @@ source "docker" "ubuntu" {
 }
 
 build {
-  sources = ["source.docker.ubuntu"]
+  sources = ["source.docker.calculator"]
 
   provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
