@@ -2,6 +2,11 @@ pipeline {
 
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
+        DOCKERHUB_REPOSITORY = credentials('repository_name')
+    }
+
     stages {
         stage('Get Artifact from JFrog') {
             steps {
@@ -23,13 +28,11 @@ pipeline {
 
         stage('Build Packer Image') {
             steps {
-                withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER') ],
-                [ string(credentialsId: repository_name, variable: 'REPOSITORY') ],
-                [ usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD') ]) {
+                withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER') ]) {
                     sh '''
                       $PACKER build -var REPOSITORY=$REPOSITORY -var USERNAME=$USERNAME -var PASSWORD=$PASSWORD Get_Calculator_Artifactory/build_image.pkr.hcl
                     '''
-                  }
+                }
             }
         }
     }
