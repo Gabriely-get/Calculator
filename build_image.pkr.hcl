@@ -8,9 +8,9 @@ packer {
 }
 
 variables {
-  REPOSITORY = "${env.REPOSITORY}"
-  USERNAME   = "${env.USERNAME}"
-  PASSWORD   = "${env.PASSWORD}"
+  REPOSITORY = ""
+  USERNAME   = ""
+  PASSWORD   = ""
 }
 
 source "docker" "ubuntu" {
