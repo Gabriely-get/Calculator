@@ -29,8 +29,13 @@ pipeline {
 
         stage('Build Packer Image') {
             steps {
-
-                sh "$PACKER build -var REPOSITORY=$DOCKERHUB_REPOSITORY -var USERNAME=$DOCKERHUB_CREDENTIALS_USR -var PASSWORD=$DOCKERHUB_CREDENTIALS_PSW Get_Calculator_Artifactory/build_image.pkr.hcl"
+                withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER'),
+                string(credentialsId: repository_name, variable: 'REPOSITORY')
+                usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD') ]) {
+                    sh '''
+                      $PACKER build -var REPOSITORY=$REPOSITORY -var USERNAME=$USERNAME -var PASSWORD=$PASSWORD Get_Calculator_Artifactory/build_image.pkr.hcl
+                    '''
+                  }
             }
         }
     }
