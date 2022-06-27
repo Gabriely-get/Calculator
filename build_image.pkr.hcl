@@ -8,12 +8,12 @@ packer {
 }
 
 variables {
-  REPOSITORY = "{{env `REPOSITORY`}}"
-  USERNAME   = "{{env `USERNAME`}}"
-  PASSWORD   = "{{env `PASSWORD`}}"
+  REPOSITORY = ""
+  USERNAME   = ""
+  PASSWORD   = ""
 }
 
-source "docker" "ubuntu" {
+source "docker" "calculator" {
   image  = "ubuntu:18.04"
   changes = [
     "EXPOSE 8000",
@@ -24,11 +24,7 @@ source "docker" "ubuntu" {
 }
 
 build {
-  sources = ["source.docker.ubuntu"]
-
-  provisioner "shell" {
-    inline = ["echo AAAA"]
-  }
+  sources = ["source.docker.calculator"]
 
   provisioner "shell" {
     script = "/var/jenkins_home/workspace/Get_Calculator_Artifactory/install-ansible.sh"
