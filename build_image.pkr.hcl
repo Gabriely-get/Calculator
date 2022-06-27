@@ -8,9 +8,9 @@ packer {
 }
 
 variables {
-  REPOSITORY = ""
-  USERNAME   = ""
-  PASSWORD   = ""
+  REPOSITORY = "gabsss/calculator-rxnetty"
+  USERNAME   = "gabsss"
+  PASSWORD   = "Caminhoilegra21!"
 }
 
 source "docker" "calculator" {
