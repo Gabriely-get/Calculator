@@ -30,7 +30,7 @@ pipeline {
             steps {
                 withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER') ]) {
                     sh '''
-                      $PACKER validate Get_Calculator_Artifactory/build_image.pkr.hcl
+                      /var/jenkins_home/tools/biz.neustar.jenkins.plugins.packer.PackerInstallation/packer_job02/packer validate Get_Calculator_Artifactory/build_image.pkr.hcl
                     '''
                 }
             }
