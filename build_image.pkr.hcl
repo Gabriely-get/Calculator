@@ -1,12 +1,3 @@
-packer {
-  required_plugins {
-    docker = {
-      version = ">= 0.0.7"
-      source  = "github.com/hashicorp/docker"
-    }
-  }
-}
-
 variables {
   REPOSITORY = "gabsss/calculator-rxnetty"
   USERNAME   = "gabsss"
@@ -15,15 +6,16 @@ variables {
 
 source "docker" "calculator" {
   image  = "ubuntu:18.04"
+  commit = "true"
   changes = [
     "EXPOSE 8000",
     "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
   ]
-  commit = "true"
-  pull   = "true"
 }
 
 build {
+  name = "learn-packer"
+
   sources = ["source.docker.calculator"]
 
   provisioner "shell" {
