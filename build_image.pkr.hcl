@@ -1,19 +1,19 @@
-#packer {
-#  required_plugins {
-#    docker = {
-#      version = ">= 0.0.7"
-#      source  = "github.com/hashicorp/docker"
-#    }
-#  }
-#}
-
-variables {
-  REPOSITORY = ""
-  USERNAME   = ""
-  PASSWORD   = ""
+packer {
+  required_plugins {
+    docker = {
+      version = ">= 0.0.7"
+      source  = "github.com/hashicorp/docker"
+    }
+  }
 }
 
-source "docker" "calculator" {
+variables {
+  REPOSITORY = "{{env `REPOSITORY`}}"
+  USERNAME   = "{{env `USERNAME`}}"
+  PASSWORD   = "{{env `PASSWORD`}}"
+}
+
+source "docker" "ubuntu" {
   image  = "ubuntu:18.04"
   changes = [
     "EXPOSE 8000",
@@ -24,7 +24,7 @@ source "docker" "calculator" {
 }
 
 build {
-  sources = ["source.docker.calculator"]
+  sources = ["source.docker.ubuntu"]
 
   provisioner "shell" {
     inline = ["echo AAAA"]
