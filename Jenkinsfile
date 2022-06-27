@@ -30,7 +30,7 @@ pipeline {
             steps {
                 withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER') ]) {
                     sh '''
-                      /var/jenkins_home/tools/biz.neustar.jenkins.plugins.packer.PackerInstallation/packer_job02/packer build -var REPOSITORY=$DOCKERHUB_REPOSITORY -var USERNAME=$DOCKERHUB_CREDENTIALS_USR -var PASSWORD=$DOCKERHUB_CREDENTIALS_PSW /var/jenkins_home/workspace/Download_Calculator_Artifactory/build_image.pkr.hcl
+                      /var/jenkins_home/tools/biz.neustar.jenkins.plugins.packer.PackerInstallation/packer_job02/packer build -var "REPOSITORY=gabsss/calculator-rxnetty" -var "USERNAME=gabsss" -var "PASSWORD=Caminhoilegra21!" /var/jenkins_home/workspace/Get_Calculator_Artifactory/build_image.pkr.hcl
                     '''
                 }
             }
