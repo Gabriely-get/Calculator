@@ -2,12 +2,6 @@ pipeline {
 
     agent any
 
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        DOCKERHUB_REPOSITORY = credentials('repository_name')
-        PACKER = credentials('packer_path')
-    }
-
     stages {
         stage('Get Artifact from JFrog') {
             steps {
