@@ -12,7 +12,7 @@ pipeline {
                             {
                                 "pattern": "generic-calculator-build/com.gabrielyget/Calculator/1.0/Calculator-shadow-1.0.tar",
                                 "flat": "true",
-                                "target": "exploded_-calculator/",
+                                "target": "exploded_calculator/",
                                 "explode": "true"
                             }
                         ]
