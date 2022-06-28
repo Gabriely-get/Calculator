@@ -3,8 +3,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dockerhub-credentials')
-        DOCKERHUB_REPOSITORY = credentials('repository_name')
+
     }
 
     stages {
@@ -28,11 +27,9 @@ pipeline {
 
         stage('Build Packer Image') {
             steps {
-                withCredentials([ string(credentialsId: 'packer_path', variable: 'PACKER') ]) {
                     sh '''
                       /var/jenkins_home/tools/biz.neustar.jenkins.plugins.packer.PackerInstallation/packer_job02/packer build -var "REPOSITORY=gabsss/calculator-rxnetty" -var "USERNAME=gabsss" -var "PASSWORD=Caminhoilegra21!" /var/jenkins_home/workspace/Get_Calculator_Artifactory/build_image.pkr.hcl
                     '''
-                }
             }
         }
     }
