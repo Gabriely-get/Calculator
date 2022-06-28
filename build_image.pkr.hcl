@@ -10,7 +10,7 @@ source "docker" "calculator" {
   image  = "ubuntu:18.04"
   commit = "true"
   changes = [
-    "EXPOSE 8000",
+    "EXPOSE 8888",
     "ENTRYPOINT  [\"java\", \"-jar\", \"calculator.jar\"]"
   ]
 }
