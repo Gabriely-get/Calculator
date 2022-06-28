@@ -27,7 +27,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "/var/jenkins_home/workspace/Download_Calculator_Artifactory/exploded-calculator/Calculator-shadow-1.0/lib/Calculator-1.0-all.jar"
+    source      = "/var/jenkins_home/workspace/Download_Calculator_Artifactory/exploded_calculator/Calculator-shadow-1.0/lib/Calculator-1.0-all.jar"
     destination = "/calculator.jar"
   }
 
