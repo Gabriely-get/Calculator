@@ -6,13 +6,13 @@ pipeline {
         stage('Get Artifact from JFrog') {
             steps {
                 rtDownload (
-                    serverId: "Calculator_Artifactory",
+                    serverId: "Calculator Artifactory",
                     spec: """{
                         "files": [
                             {
                                 "pattern": "gradle-calculator-build/com.gabrielyget/Calculator/1.0/Calculator-shadow-1.0.tar",
                                 "flat": "true",
-                                "target": "extracted-calculator/",
+                                "target": "exploded_-calculator/",
                                 "explode": "true"
                             }
                         ]
