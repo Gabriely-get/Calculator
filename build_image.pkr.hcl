@@ -1,3 +1,4 @@
+/* tirei o required plugin pois rodei a primeira vez no jenkinse e foi baixado. Na segunda vez, disse que ja havia baixado e iria duplicar, então, tirei*/
 
 variables {
   REPOSITORY = "gabsss/calculator-rxnetty"
@@ -18,10 +19,6 @@ build {
   name = "build-calculator-packer"
 
   sources = ["source.docker.calculator"]
-
-  provisioner "shell" {
-    script = "/var/jenkins_home/workspace/Download_Calculator_Artifactory/install-ansible.sh"
-  }
 
   provisioner "ansible-local" {
     playbook_file = "/var/jenkins_home/workspace/Download_Calculator_Artifactory/common.yml"
