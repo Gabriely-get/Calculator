@@ -1,3 +1,12 @@
+packer {
+  required_plugins {
+    docker = {
+      version = ">= 0.0.7"
+      source  = "github.com/hashicorp/docker"
+    }
+  }
+}
+
 variables {
   REPOSITORY = "gabsss/calculator-rxnetty"
   USERNAME   = "gabsss"
@@ -14,7 +23,7 @@ source "docker" "calculator" {
 }
 
 build {
-  name = "learn-packer"
+  name = "build-calculator-packer"
 
   sources = ["source.docker.calculator"]
 
