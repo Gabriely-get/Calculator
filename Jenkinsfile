@@ -2,10 +2,6 @@ pipeline {
 
     agent any
 
-    environment {
-
-    }
-
     stages {
         stage('Get Artifact from JFrog') {
             steps {
