@@ -1,7 +1,7 @@
 variables {
   REPOSITORY = ""
-  USERNAME   = "gabsss"
-  PASSWORD   = "Caminhoilegra21!"
+  USERNAME   = ""
+  PASSWORD   = ""
 }
 
 source "docker" "ubuntu" {
