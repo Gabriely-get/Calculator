@@ -11,6 +11,7 @@ pipeline {
 
       stage('Run Docker Image') {
          steps {
+            sh 'docker rm -f calculator'
             sh 'docker run --name calculator -p 8888:8888 gabsss/calculator-rxnetty:latest'
          }
       }
