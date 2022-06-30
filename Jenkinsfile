@@ -16,6 +16,12 @@ pipeline {
             }
         }
 
+        stage('Gradle test') {
+                    steps {
+                        sh './gradlew test'
+                    }
+                }
+
         stage('Gradle build') {
             steps {
                 sh './gradlew build'
