@@ -27,7 +27,7 @@ build {
   }
 
   provisioner "file" {
-    source      = "Calculator-1.0-all.jar"
+    source      = "*/Calculator-1.0-all.jar"
     destination = "/calculator.jar"
   }
 
