@@ -27,7 +27,8 @@ pipeline {
 
         stage('Packer Build Image') {
             steps {
-                sh 'chmod 666 /usr/local/bin/packer'
+            sh 'echo "Hiiii"'
+                sh 'sudo chmod 666 /usr/local/bin/packer'
                 sh '/usr/local/bin/packer build -var "REPOSITORY=$DOCKERHUB_REPOSITORY" -var "USERNAME=$DOCKERHUB_CREDENTIALS_USR" -var "PASSWORD=$DOCKERHUB_CREDENTIALS_PSW" "build_image.pkr.hcl"'
             }
         }
