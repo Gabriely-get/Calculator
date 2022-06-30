@@ -27,7 +27,7 @@ pipeline {
 
         stage('Packer Build Image') {
             steps {
-            sh 'echo ${which packer}'
+            sh "echo ${which packer}"
                 sh '/usr/local/bin/packer build -var "REPOSITORY=$DOCKERHUB_REPOSITORY" -var "USERNAME=$DOCKERHUB_CREDENTIALS_USR" -var "PASSWORD=$DOCKERHUB_CREDENTIALS_PSW" "build_image.pkr.hcl"'
             }
         }
