@@ -17,7 +17,7 @@ pipeline {
                         "files": [
                             {
                                 "pattern": "generic-calculator-build/Calculator-1.0-all.jar",
-                                "target": "Calculator-1.0.jar"
+                                "target": "Calculator-1.0-all.jar"
                             }
                         ]
                     }"""
