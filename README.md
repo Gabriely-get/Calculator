@@ -2,18 +2,18 @@
 
 ## Sumary
 
-- [Resume](#Resume)
-- [Required](#Required)
+- [Resume](#resume)
+- [Required](#required)
 - [Configuration](#configuration)
   - [Jfrog](#jfrog)
   - [Jenkins](#jenkins)
-- [Running with Jenkinsfile](#Running with Jenkinsfiles)
-  - [Jobs](#Creating jobs)
-- [Running without Jenkinsfile](#Running without Jenkinsfile)
+- [Running with Jenkinsfile](#running-with-jenkinsfiles)
+  - [Jobs](#creating-jobs)
+- [Running without Jenkinsfile](#running-without-jenkinsfile)
   - [Jobs](#jobs)
-    - [Job 01](#Creating job 01)
-    - [Job 02](#Creating job 02)
-    - [Job 03](#Creating job 03)
+    - [Job 01](#creating-job-01)
+    - [Job 02](#creating-job-02)
+    - [Job 03](#creating-job-03)
 - [Endpoints](#endpoints)
 - [Extra](#extra-references)
 
@@ -91,10 +91,10 @@ Project using the Calculator repository and running in 03 Jenkins jobs.
        1. Go to `Manage Jenkins` -> `Global Tool Configuration` -> Packer -> `Add Packer`
        2. Name E.g.: *packer_1.8.2_linuxamd64* -> *Install automatically* -> Choose a version compatible with your S.O. _E.g.: linux (amd64)_ -> Save 
 
-## Running with Jenkinsfiles
+## Running With Jenkinsfiles
 > Running with Jenkinsfiles, these following files won't be needed in Calculator project: build_image.pkr.hcl, common.yml and install-ansible.sh
 
-### Creating jobs
+### Creating Jobs
 1. On *Dashboard* click in `New Item`
 2. Set a name, choose `Pipeline` and click `OK`
    >Choose appropriated names. E.g.: *Automating_Calculator_Pipeline*; *Build_Calculator_Pipeline*.
@@ -105,11 +105,11 @@ Project using the Calculator repository and running in 03 Jenkins jobs.
    2. ./job-02/Jenkinsfile
    3. ./job-03/Jenkinsfile
 
-## Running without Jenkinsfile
+## Running Without Jenkinsfile
 
 ### Jobs
 
-#### Creating job 01
+#### Creating Job 01
 
 1. On *Dashboard* click in `New Item`
 2. Set a name. E.g.: *Automating_Calculator_Artifactory*, choose `Freestyle Project` and click `OK`
@@ -128,7 +128,7 @@ Project using the Calculator repository and running in 03 Jenkins jobs.
 5. Go to `Build` -> `Add build step` -> `Invoke Gradle script` -> Choose the configured gradle on *Gradle Version* -> in *Tasks* type *test*
 6. Repeat _step 4_ but type *build* int the new *Tasks*
 <br> <br>
-#### Creating job 02
+#### Creating Job 02
 
 1. On *Dashboard* click in `New Item`
 2. Set a name. E.g.: *Download_Calculator-RxNetty*, choose `Freestyle Project` and click `OK`
@@ -153,7 +153,7 @@ Project using the Calculator repository and running in 03 Jenkins jobs.
    1.     -var REPOSITORY=$repository  -var USERNAME=$username  -var PASSWORD=$password
 <br>
 
-#### Creating job 03
+#### Creating Job 03
 1. On *Dashboard* click in `New Item`
 2. Set a name. E.g.: *Pull_and_Run_Calculator_Artifactory*, choose `Freestyle Project` and click `OK`
 3. Go to `Build` -> `Execute Shell` -> Paste the code
